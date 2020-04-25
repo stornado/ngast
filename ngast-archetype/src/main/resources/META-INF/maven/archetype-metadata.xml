@@ -14,7 +14,7 @@
       <directory>src/test/resources</directory>
     </fileSet>
     <fileSet encoding="UTF-8" filtered="true" packaged="false">
-      <directory/>
+      <directory></directory>
       <includes>
         <include>__editorconfig__</include>
         <include>__gitignore__</include>
