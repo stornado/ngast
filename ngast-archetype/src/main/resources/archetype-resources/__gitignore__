@@ -146,9 +146,6 @@ local.properties
 .loadpath
 .recommenders
 
-.classpath
-.project
-
 # External tool builders
 .externalToolBuilders/
 
@@ -358,3 +355,8 @@ buildNumber.properties
 # https://github.com/takari/maven-wrapper#usage-without-binary-jar
 .mvn/wrapper/maven-wrapper.jar
 
+
+### allure repot
+.allure/
+
+HELP.md
