@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Properties;
 import java.util.Set;
+import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
@@ -45,7 +46,7 @@ public final class PropertiesUtils {
    * @param fileName properties文件名或相对于resources的相对路径
    * @return properties in fileName
    */
-  public static Properties loadPropertiesFrom(String fileName) {
+  public static Properties loadPropertiesFrom(@NonNull final String fileName) {
     final Properties properties = new Properties();
     loadPropertiesFrom(ClassLoader.getSystemClassLoader(), fileName, properties);
     loadPropertiesFrom(Thread.currentThread().getContextClassLoader(), fileName, properties);
@@ -60,7 +61,7 @@ public final class PropertiesUtils {
    * @param key the property key.
    * @return the value in this property list with the specified key value.
    */
-  public static String getProperty(String key) {
+  public static String getProperty(@NonNull final String key) {
     return properties.getProperty(key);
   }
 
@@ -73,83 +74,83 @@ public final class PropertiesUtils {
    * @param defaultValue a default value.
    * @return the value in this property list with the specified key value.
    */
-  public static String getProperty(String key, String defaultValue) {
+  public static String getProperty(@NonNull final String key, final String defaultValue) {
     String val = getProperty(key);
     return (val == null) ? defaultValue : val;
   }
 
-  public static Object get(Object key) {
+  public static Object get(@NonNull final Object key) {
     return properties.get(key);
   }
 
-  public static Object getOrDefault(Object key, Object defaultValue) {
+  public static Object getOrDefault(@NonNull final Object key, final Object defaultValue) {
     return properties.getOrDefault(key, defaultValue);
   }
 
-  public static String getAsString(String key) {
+  public static String getAsString(@NonNull final String key) {
     return getProperty(key);
   }
 
-  public static String getAsString(String key, String defaultValue) {
+  public static String getAsString(@NonNull final String key, final String defaultValue) {
     return getProperty(key, defaultValue);
   }
 
-  public static Short getAsShort(String key) {
+  public static Short getAsShort(@NonNull final String key) {
     String val = getProperty(key);
     return StringUtils.isBlank(val) ? null : Short.parseShort(StringUtils.trim(val));
   }
 
-  public static Short getAsShort(String key, int radix) {
+  public static Short getAsShort(@NonNull final String key, final int radix) {
     String val = getProperty(key);
     return StringUtils.isBlank(val) ? null : Short.parseShort(StringUtils.trim(val), radix);
   }
 
-  public static Integer getAsInteger(String key) {
+  public static Integer getAsInteger(@NonNull final String key) {
     String val = getProperty(key);
     return StringUtils.isBlank(val) ? null : Integer.parseInt(StringUtils.trim(val));
   }
 
-  public static Integer getAsInteger(String key, int radix) {
+  public static Integer getAsInteger(@NonNull final String key, final int radix) {
     String val = getProperty(key);
     return StringUtils.isBlank(val) ? null : Integer.parseInt(StringUtils.trim(val), radix);
   }
 
-  public static Long getAsLong(String key) {
+  public static Long getAsLong(@NonNull final String key) {
     String val = getProperty(key);
     return StringUtils.isBlank(val) ? null : Long.parseLong(StringUtils.trim(val));
   }
 
-  public static Long getAsLong(String key, int radix) {
+  public static Long getAsLong(@NonNull final String key, final int radix) {
     String val = getProperty(key);
     return StringUtils.isBlank(val) ? null : Long.parseLong(StringUtils.trim(val), radix);
   }
 
-  public static Float getAsFloat(String key) {
+  public static Float getAsFloat(@NonNull final String key) {
     String val = getProperty(key);
     return StringUtils.isBlank(val) ? null : Float.parseFloat(StringUtils.trim(val));
   }
 
-  public static Double getAsDouble(String key) {
+  public static Double getAsDouble(@NonNull final String key) {
     String val = getProperty(key);
     return StringUtils.isBlank(val) ? null : Double.parseDouble(StringUtils.trim(val));
   }
 
-  public static BigInteger getAsBigInteger(String key) {
+  public static BigInteger getAsBigInteger(@NonNull final String key) {
     String val = getProperty(key);
     return StringUtils.isBlank(val) ? null : new BigInteger(StringUtils.trim(val));
   }
 
-  public static BigDecimal getAsBigDecimal(String key) {
+  public static BigDecimal getAsBigDecimal(@NonNull final String key) {
     String val = getProperty(key);
     return StringUtils.isBlank(val) ? null : new BigDecimal(StringUtils.trim(val));
   }
 
-  public static Byte getAsByte(String key) {
+  public static Byte getAsByte(@NonNull final String key) {
     String val = getProperty(key);
     return StringUtils.isBlank(val) ? null : Byte.parseByte(StringUtils.trim(val));
   }
 
-  public static Boolean getAsBoolean(String key) {
+  public static Boolean getAsBoolean(@NonNull final String key) {
     String val = getProperty(key);
     return StringUtils.isBlank(val) ? null : Boolean.parseBoolean(StringUtils.trim(val));
   }
@@ -171,7 +172,9 @@ public final class PropertiesUtils {
   }
 
   private static void loadPropertiesFrom(
-      final ClassLoader classLoader, String fileName, final Properties properties) {
+      @NonNull final ClassLoader classLoader,
+      @NonNull final String fileName,
+      @NonNull final Properties properties) {
 
     try (InputStream stream = classLoader.getResourceAsStream(fileName)) {
       if (stream != null) {
