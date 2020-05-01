@@ -1,6 +1,6 @@
 package com.zxytech.ngast.testng;
 
-import static com.zxytech.ngast.util.PropertiesUtils.NGAST_RETRY_TIMES_KEY_NAME;
+import static com.zxytech.ngast.constant.NgastPropertiesKeyName.NGAST_RETRY_TIMES_KEY_NAME;
 
 import com.zxytech.ngast.util.PropertiesUtils;
 import lombok.extern.slf4j.Slf4j;
