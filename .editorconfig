@@ -12,13 +12,13 @@ tab_width = 2
 [*.java]
 indent_size = 4
 
-[{*.cjs,*.js}]
+[{*.cjs, *.js}]
 max_line_length = 80
 
-[{*.gradle,*.groovy,*.gant,*.gdsl,*.gy,*.gson}]
+[{*.gradle, *.groovy, *.gant, *.gdsl, *.gy, *.gson}]
 indent_size = 4
 tab_width = 4
 
-[{*.gradle.kts,*.kts,*.kt}]
+[{*.gradle.kts, *.kts, *.kt}]
 indent_size = 4
 tab_width = 4

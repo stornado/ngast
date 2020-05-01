@@ -12,6 +12,7 @@
     </fileSet>
     <fileSet encoding="UTF-8" filtered="false" packaged="false">
       <directory>src/test/resources</directory>
+      <include>allure.properties</include>
       <include>ngast.properties</include>
       <include>ngast-test.properties</include>
     </fileSet>

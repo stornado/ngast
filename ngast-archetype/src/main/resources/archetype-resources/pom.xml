@@ -60,7 +60,8 @@
         <allure.maven.version>2.10.0</allure.maven.version>
         <aspectj.version>1.9.5</aspectj.version>
         <maven.surefire.version>2.22.1</maven.surefire.version>
-        <allure.results.directory>${project.basedir}/target/allure-results</allure.results.directory>
+        <maven.antrun.version>1.8</maven.antrun.version>
+        <maven.compiler.version>3.8.1</maven.compiler.version>
       </properties>
     </profile>
   </profiles>
@@ -92,21 +93,24 @@
         <version>${allure.maven.version}</version>
         <configuration>
           <reportVersion>${allure.version}</reportVersion>
-          <resultsDirectory>${allure.results.directory}</resultsDirectory>
         </configuration>
       </plugin>
 
       <plugin>
         <artifactId>maven-antrun-plugin</artifactId>
+        <version>${maven.antrun.version}</version>
         <executions>
           <execution>
+            <id>test</id>
             <phase>test</phase>
             <configuration>
               <target name="allure report generate"
                 description="generate allure report include histories">
+                <mkdir dir="${project.build.directory}/allure-results/history"/>
+                <mkdir dir="${project.build.directory}/site/allure-maven-plugin/history"/>
                 <copy failonerror="false" verbose="true" preservelastmodified="true"
-                  todir="${allure.results.directory}/history">
-                  <fileset dir="${project.basedir}/target/site/allure-maven-plugin/history"/>
+                  todir="${project.build.directory}/allure-results/history">
+                  <fileset dir="${project.build.directory}/site/allure-maven-plugin/history"/>
                 </copy>
                 <exec dir="${project.basedir}" executable="mvn" failonerror="false"
                   failifexecutionfails="false">
@@ -123,6 +127,7 @@
 
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
+        <version>${maven.compiler.version}</version>
         <configuration>
           <source>${maven.compiler.source}</source>
           <target>${maven.compiler.target}</target>
@@ -141,7 +146,6 @@
         <artifactId>allure-maven</artifactId>
         <configuration>
           <reportVersion>${allure.version}</reportVersion>
-          <resultsDirectory>${allure.results.directory}</resultsDirectory>
           <propertiesFilePath>${project.basedir}/src/test/resources/allure.properties
           </propertiesFilePath>
           <!--<allureDownloadUrl>https://dl.bintray.com/qameta/generic/io/qameta/allure/allure/${allure.version}/allure-${allure.version}.zip</allureDownloadUrl>-->
