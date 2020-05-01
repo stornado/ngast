@@ -51,7 +51,7 @@
     </profile>
 
     <profile>
-      <id>report-plugins</id>
+      <id>allure-report</id>
       <activation>
         <activeByDefault>true</activeByDefault>
       </activation>
@@ -59,8 +59,8 @@
         <allure.version>2.13.2</allure.version>
         <allure.maven.version>2.10.0</allure.maven.version>
         <aspectj.version>1.9.5</aspectj.version>
-        <maven.antrun.version>1.8</maven.antrun.version>
         <maven.surefire.version>2.22.1</maven.surefire.version>
+        <allure.results.directory>${project.basedir}/target/allure-results</allure.results.directory>
       </properties>
     </profile>
   </profiles>
@@ -92,12 +92,12 @@
         <version>${allure.maven.version}</version>
         <configuration>
           <reportVersion>${allure.version}</reportVersion>
+          <resultsDirectory>${project.basedir}/target/allure-results</resultsDirectory>
         </configuration>
       </plugin>
 
       <plugin>
         <artifactId>maven-antrun-plugin</artifactId>
-        <version>${maven.antrun.version}</version>
         <executions>
           <execution>
             <phase>test</phase>
@@ -105,7 +105,7 @@
               <target name="allure report generate"
                 description="generate allure report include histories">
                 <copy failonerror="false" verbose="true" preservelastmodified="true"
-                  todir="${project.basedir}/target/allure-results/history">
+                  todir="${allure.results.directory}/history">
                   <fileset dir="${project.basedir}/target/site/allure-maven-plugin/history"/>
                 </copy>
                 <exec dir="${project.basedir}" executable="mvn" failonerror="false"
@@ -141,7 +141,7 @@
         <artifactId>allure-maven</artifactId>
         <configuration>
           <reportVersion>${allure.version}</reportVersion>
-          <resultsDirectory>${project.basedir}/target/allure-results</resultsDirectory>
+          <resultsDirectory>${allure.results.directory}</resultsDirectory>
           <propertiesFilePath>${project.basedir}/src/test/resources/allure.properties
           </propertiesFilePath>
           <!--<allureDownloadUrl>https://dl.bintray.com/qameta/generic/io/qameta/allure/allure/${allure.version}/allure-${allure.version}.zip</allureDownloadUrl>-->

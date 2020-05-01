@@ -3,6 +3,12 @@
  */
 
 dependencies {
+    compileOnly 'org.projectlombok:lombok:1.18.12'
+    annotationProcessor 'org.projectlombok:lombok:1.18.12'
+
+    testCompileOnly 'org.projectlombok:lombok:1.18.12'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.12'
+
     implementation 'io.rest-assured:rest-assured:4.3.0'
     implementation 'org.testng:testng:7.1.0'
     implementation 'io.qameta.allure:allure-rest-assured:2.13.2'
