@@ -14,8 +14,10 @@ public final class PropertiesUtils {
 
   public static final String NGAST_PROPERTIES_FILE_NAME = "ngast.properties";
   public static final String NGAST_ENVIRONMENT_KEY_NAME = "ngast.environment";
+    public static final String NGAST_RETRY_TIMES_KEY_NAME = "ngast.testng.retry.times";
+public static final String NGAST_TEST_TIMEOUT_KEY_NAME = "ngast.testng.timeout";
 
-  private static final Properties properties;
+    private static final Properties properties;
 
   static {
     properties = loadNgastProperties();

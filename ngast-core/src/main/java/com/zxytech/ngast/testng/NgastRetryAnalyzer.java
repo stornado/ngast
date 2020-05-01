@@ -1,5 +1,7 @@
 package com.zxytech.ngast.testng;
 
+import static com.zxytech.ngast.util.PropertiesUtils.NGAST_RETRY_TIMES_KEY_NAME;
+
 import com.zxytech.ngast.util.PropertiesUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.IRetryAnalyzer;
@@ -7,11 +9,11 @@ import org.testng.ITestResult;
 
 @Slf4j
 public class NgastRetryAnalyzer implements IRetryAnalyzer {
-  public static final String NGAST_RETRY_TIMES_CONFIG_KEY = "ngast.testng.retry";
+
   private static final int RETRY_TIMES;
 
   static {
-    Integer retryTimes = PropertiesUtils.getAsInteger(NGAST_RETRY_TIMES_CONFIG_KEY);
+    Integer retryTimes = PropertiesUtils.getAsInteger(NGAST_RETRY_TIMES_KEY_NAME);
     RETRY_TIMES = retryTimes == null ? 1 : retryTimes;
   }
 

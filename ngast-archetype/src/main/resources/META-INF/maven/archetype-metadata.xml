@@ -12,6 +12,11 @@
     </fileSet>
     <fileSet encoding="UTF-8" filtered="false" packaged="false">
       <directory>src/test/resources</directory>
+      <include>ngast.properties</include>
+      <include>ngast-test.properties</include>
+    </fileSet>
+    <fileSet encoding="UTF-8" filtered="false" packaged="false">
+      <directory>src/test/resources/data/test</directory>
     </fileSet>
     <fileSet encoding="UTF-8" filtered="true" packaged="false">
       <directory></directory>

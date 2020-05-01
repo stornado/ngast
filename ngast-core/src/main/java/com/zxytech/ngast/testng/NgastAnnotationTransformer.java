@@ -1,5 +1,6 @@
 package com.zxytech.ngast.testng;
 
+import com.zxytech.ngast.util.PropertiesUtils;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +22,10 @@ public class NgastAnnotationTransformer implements IAnnotationTransformer {
     }
     if (StringUtils.isBlank(annotation.getSuiteName()) && testClass != null) {
       annotation.setSuiteName(testClass.getName());
+    }
+    Long ngastTimeout = PropertiesUtils.getAsLong(PropertiesUtils.NGAST_TEST_TIMEOUT_KEY_NAME);
+    if (annotation.getTimeOut() <= 0 && ngastTimeout != null) {
+      annotation.setTimeOut(ngastTimeout);
     }
     log.debug(
         "{} {} {}",

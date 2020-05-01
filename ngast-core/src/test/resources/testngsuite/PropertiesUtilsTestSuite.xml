@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite" >
+  <test verbose="2" preserve-order="true"
+    name="PropertiesUtilsTest"
+  >
+    <classes >
+      <class name="com.zxytech.ngast.util.PropertiesUtilsTest"
+
+      >
+        <methods >
+          <include name="testLoadNgastProperties"/>
+          <include name="testLoadPropertiesFrom"/>
+          <include name="testGetProperty"/>
+          <include name="testTestGetProperty"/>
+          <include name="testPropertyNames"/>
+          <include name="testStringPropertyNames"/>
+          <include name="testGet"/>
+          <include name="testGetOrDefault"/>
+          <include name="testGetAsInteger"/>
+          <include name="testGetAsLong"/>
+          <include name="testGetAsFloat"/>
+          <include name="testGetAsDouble"/>
+          <include name="testGetAsBigInteger"/>
+          <include name="testGetAsBigDecimal"/>
+        </methods>
+      </class>
+    </classes>
+  </test>
+</suite>
