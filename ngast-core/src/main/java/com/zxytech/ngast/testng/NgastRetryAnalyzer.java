@@ -21,12 +21,14 @@ public class NgastRetryAnalyzer implements IRetryAnalyzer {
 
   @Override
   public boolean retry(ITestResult result) {
-    log.debug(
-        "method {} for case {} {} had executed {} times",
-        result.getMethod(),
-        result.getTestName(),
-        result.getName(),
-        executedCount);
+    if (log.isDebugEnabled()) {
+      log.debug(
+          "method {} for case {} {} had executed {} times",
+          result.getMethod(),
+          result.getTestName(),
+          result.getName(),
+          executedCount);
+    }
     if (!result.isSuccess() && executedCount < RETRY_TIMES) {
       executedCount++;
       return true;

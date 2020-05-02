@@ -6,7 +6,8 @@ import static org.apache.http.HttpStatus.SC_ACCEPTED;
 import static org.apache.http.HttpStatus.SC_CREATED;
 import static org.apache.http.HttpStatus.SC_MOVED_TEMPORARILY;
 import static org.apache.http.HttpStatus.SC_OK;
-import static org.hamcrest.Matchers.isIn;
+import static org.hamcrest.Matchers.in;
+import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.lessThanOrEqualTo;
 
 import com.zxytech.ngast.util.PropertiesUtils;
@@ -47,7 +48,7 @@ public abstract class BaseNgastTestCase {
     ResponseSpecBuilder respSpecBuilder = new ResponseSpecBuilder().log(LogDetail.ALL);
 
     respSpecBuilder.expectStatusCode(
-        isIn(Arrays.asList(SC_OK, SC_CREATED, SC_ACCEPTED, SC_MOVED_TEMPORARILY)));
+        is(in(Arrays.asList(SC_OK, SC_CREATED, SC_ACCEPTED, SC_MOVED_TEMPORARILY))));
     Long apiTimeout = PropertiesUtils.getAsLong(NGAST_API_TIMEOUT_KEY_NAME);
     if (apiTimeout != null) {
       respSpecBuilder.expectResponseTime(lessThanOrEqualTo(apiTimeout));
