@@ -24,6 +24,9 @@ public class PostUtils {
         client = HttpClients.createDefault();
     }
 
+    private PostUtils() {
+    }
+
     public static CloseableHttpResponse postJson(@NonNull String url, @NonNull String json)
         throws IOException {
         HttpPost post = new HttpPost(url);
