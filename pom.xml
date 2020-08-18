@@ -17,6 +17,8 @@
     <module>ngast-archetype</module>
     <module>ngast-bom</module>
     <module>ngast-core</module>
+
+    <module>ngast-modules-archetype</module>
   </modules>
 
   <profiles>
@@ -118,4 +120,5 @@
       <distribution>repo</distribution>
     </license>
   </licenses>
+
 </project>
