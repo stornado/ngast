@@ -24,3 +24,4 @@ mvn allure:report
 
 ```bash
 mvn allure:serve
+```
