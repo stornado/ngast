@@ -146,9 +146,6 @@ local.properties
 .loadpath
 .recommenders
 
-.classpath
-.project
-
 # External tool builders
 .externalToolBuilders/
 
@@ -196,7 +193,7 @@ local.properties
 
 ### Gradle template
 .gradle
-build/
+/build/
 
 # Ignore Gradle GUI config
 gradle-app.setting
@@ -358,5 +355,8 @@ buildNumber.properties
 # https://github.com/takari/maven-wrapper#usage-without-binary-jar
 .mvn/wrapper/maven-wrapper.jar
 
-.allure
-allure-results
+
+### allure repot
+.allure/
+
+HELP.md

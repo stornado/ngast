@@ -1,0 +1,172 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>${groupId}</groupId>
+  <artifactId>${artifactId}</artifactId>
+  <version>${version}</version>
+  <packaging>jar</packaging>
+
+
+  <properties>
+    <ngast.version>1.0-SNAPSHOT</ngast.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.zxytech.ngast</groupId>
+      <artifactId>ngast-core</artifactId>
+      <version>${ngast.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+
+
+  <profiles>
+    <profile>
+      <id>jdk1.8</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+        <property>
+          <name>jdk.version</name>
+          <value>1.8</value>
+        </property>
+      </activation>
+      <properties>
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <maven.compiler.compilerVersion>${java.version}</maven.compiler.compilerVersion>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>allure-report</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <allure.version>2.13.2</allure.version>
+        <allure.maven.version>2.10.0</allure.maven.version>
+        <aspectj.version>1.9.5</aspectj.version>
+        <maven.surefire.version>2.22.1</maven.surefire.version>
+        <maven.antrun.version>1.8</maven.antrun.version>
+        <maven.compiler.version>3.8.1</maven.compiler.version>
+      </properties>
+    </profile>
+  </profiles>
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>${maven.surefire.version}</version>
+        <configuration>
+          <testFailureIgnore>true</testFailureIgnore>
+          <argLine>
+            -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar
+          </argLine>
+        </configuration>
+        <dependencies>
+          <!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
+          <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectj.version}</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+
+      <plugin>
+        <groupId>io.qameta.allure</groupId>
+        <artifactId>allure-maven</artifactId>
+        <version>${allure.maven.version}</version>
+        <configuration>
+          <reportVersion>${allure.version}</reportVersion>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <version>${maven.antrun.version}</version>
+        <executions>
+          <execution>
+            <id>test</id>
+            <phase>test</phase>
+            <configuration>
+              <target name="allure report generate"
+                description="generate allure report include histories">
+                <mkdir dir="${project.build.directory}/allure-results/history"/>
+                <mkdir dir="${project.build.directory}/site/allure-maven-plugin/history"/>
+                <copy failonerror="false" verbose="true" preservelastmodified="true"
+                  todir="${project.build.directory}/allure-results/history">
+                  <fileset dir="${project.build.directory}/site/allure-maven-plugin/history"/>
+                </copy>
+                <exec dir="${project.basedir}" executable="mvn" failonerror="false"
+                  failifexecutionfails="false">
+                  <arg value="allure:aggregate"/>
+                </exec>
+              </target>
+            </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>${maven.compiler.version}</version>
+        <configuration>
+          <source>${maven.compiler.source}</source>
+          <target>${maven.compiler.target}</target>
+          <encoding>${project.build.sourceEncoding}</encoding>
+          <compilerVersion>${maven.compiler.compilerVersion}</compilerVersion>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <reporting>
+    <excludeDefaults>true</excludeDefaults>
+    <plugins>
+      <plugin>
+        <groupId>io.qameta.allure</groupId>
+        <artifactId>allure-maven</artifactId>
+        <configuration>
+          <reportVersion>${allure.version}</reportVersion>
+          <propertiesFilePath>${project.basedir}/src/test/resources/allure.properties
+          </propertiesFilePath>
+          <!--<allureDownloadUrl>https://dl.bintray.com/qameta/generic/io/qameta/allure/allure/${allure.version}/allure-${allure.version}.zip</allureDownloadUrl>-->
+          <allureDownloadUrl>
+            https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/${allure.version}/allure-commandline-${allure.version}.zip
+          </allureDownloadUrl>
+        </configuration>
+      </plugin>
+    </plugins>
+  </reporting>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>com.zxytech.ngast</groupId>
+        <artifactId>ngast-bom</artifactId>
+        <version>${ngast.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+</project>
