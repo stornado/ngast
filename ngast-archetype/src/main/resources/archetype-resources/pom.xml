@@ -56,7 +56,7 @@
         <activeByDefault>true</activeByDefault>
       </activation>
       <properties>
-        <allure.version>2.13.2</allure.version>
+        <allure.version>2.13.5</allure.version>
         <allure.maven.version>2.10.0</allure.maven.version>
         <aspectj.version>1.9.5</aspectj.version>
         <maven.surefire.version>2.22.1</maven.surefire.version>
