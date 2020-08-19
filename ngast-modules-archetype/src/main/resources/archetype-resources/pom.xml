@@ -96,6 +96,11 @@
         <version>${allure.maven.version}</version>
         <configuration>
           <reportVersion>${allure.version}</reportVersion>
+          <propertiesFilePath>${project.basedir}/allure.properties
+          </propertiesFilePath>
+          <properties>
+            <allure.results.directory>target/allure-results</allure.results.directory>
+          </properties>
         </configuration>
       </plugin>
 
@@ -108,16 +113,14 @@
             <phase>test</phase>
             <configuration>
               <target name="allure report generate"
-                description="generate allure report include histories">
-                <mkdir dir="${project.build.directory}/allure-results/history"/>
-                <mkdir dir="${project.build.directory}/site/allure-maven-plugin/history"/>
-                <copy failonerror="false" verbose="true" preservelastmodified="true"
-                  todir="${project.build.directory}/allure-results/history">
-                  <fileset dir="${project.build.directory}/site/allure-maven-plugin/history"/>
-                </copy>
+                description="generate allure report">
                 <exec dir="${project.basedir}" executable="mvn" failonerror="false"
                   failifexecutionfails="false">
                   <arg value="allure:aggregate"/>
+                </exec>
+                <exec dir="${project.basedir}" executable="mvn" failonerror="false"
+                  failifexecutionfails="false">
+                  <arg value="allure:report"/>
                 </exec>
               </target>
             </configuration>
@@ -151,6 +154,9 @@
           <reportVersion>${allure.version}</reportVersion>
           <propertiesFilePath>${project.basedir}/allure.properties
           </propertiesFilePath>
+          <properties>
+            <allure.results.directory>target/allure-results</allure.results.directory>
+          </properties>
           <!--<allureDownloadUrl>https://dl.bintray.com/qameta/generic/io/qameta/allure/allure/${allure.version}/allure-${allure.version}.zip</allureDownloadUrl>-->
           <allureDownloadUrl>
             https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/${allure.version}/allure-commandline-${allure.version}.zip
