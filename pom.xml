@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.zxytech.ngast</groupId>
   <artifactId>ngast-api-test</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>0.1.0</version>
   <packaging>pom</packaging>
 
   <name>ngast-api-test</name>
@@ -139,5 +139,12 @@
       <url>https://maven.pkg.github.com/stornado/ngast</url>
     </repository>
   </distributionManagement>
+
+  <scm>
+    <connection>scm:git:git://github.com/stornado/ngast.git</connection>
+    <developerConnection>scm:git:ssh://github.com:stornado/ngast.git</developerConnection>
+    <url>https://github.com/stornado/ngast/tree/master</url>
+  </scm>
+
 
 </project>

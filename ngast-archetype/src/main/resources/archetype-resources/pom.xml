@@ -10,7 +10,7 @@
 
 
   <properties>
-    <ngast.version>1.0-SNAPSHOT</ngast.version>
+    <ngast.version>0.1.0</ngast.version>
   </properties>
 
   <dependencies>

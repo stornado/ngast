@@ -39,7 +39,7 @@
       <defaultValue>ngast-api-case</defaultValue>
     </requiredProperty>
     <requiredProperty key="version">
-      <defaultValue>1.0-SNAPSHOT</defaultValue>
+      <defaultValue>0.1.0</defaultValue>
     </requiredProperty>
     <requiredProperty key="editorconfig">
       <defaultValue>.editorconfig</defaultValue>
@@ -49,4 +49,3 @@
     </requiredProperty>
   </requiredProperties>
 </archetype-descriptor>
-
