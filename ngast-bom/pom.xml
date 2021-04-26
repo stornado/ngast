@@ -50,7 +50,7 @@
     <version.commons-text>1.8</version.commons-text>
     <version.commons-collections4>4.4</version.commons-collections4>
     <version.commons-math3>3.6.1</version.commons-math3>
-    <version.commons-io>2.6</version.commons-io>
+    <version.commons-io>2.7</version.commons-io>
     <version.commons-configuration2>2.7</version.commons-configuration2>
     <version.commons-dbcp2>2.7.0</version.commons-dbcp2>
     <version.commons-pool2>2.8.0</version.commons-pool2>
