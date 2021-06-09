@@ -44,7 +44,7 @@
     <version.allure.maven>2.10.0</version.allure.maven>
     <version.maven.antrun>1.8</version.maven.antrun>
     <version.httpasyncclient>4.1.4</version.httpasyncclient>
-    <version.httpclient>4.5.12</version.httpclient>
+    <version.httpclient>4.5.13</version.httpclient>
     <version.httpcore>4.4.13</version.httpcore>
     <version.elasticsearch.client>7.6.2</version.elasticsearch.client>
     <version.commons-text>1.8</version.commons-text>
