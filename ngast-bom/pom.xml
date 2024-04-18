@@ -32,7 +32,7 @@
     <version.hamcrest>1.3</version.hamcrest>
     <version.guice>4.2.3</version.guice>
     <version.har.reader>2.1.7</version.har.reader>
-    <version.gson>2.8.6</version.gson>
+    <version.gson>2.8.9</version.gson>
     <version.freemarker>2.3.30</version.freemarker>
     <version.mongo.driver>3.12.2</version.mongo.driver>
     <version.mysql.connector>8.0.19</version.mysql.connector>
