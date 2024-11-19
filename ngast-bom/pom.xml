@@ -36,7 +36,7 @@
     <version.freemarker>2.3.30</version.freemarker>
     <version.mongo.driver>3.12.8</version.mongo.driver>
     <version.mysql.connector>8.0.28</version.mysql.connector>
-    <version.kafka.clients>2.6.3</version.kafka.clients>
+    <version.kafka.clients>3.7.1</version.kafka.clients>
     <version.jedis>3.2.0</version.jedis>
     <version.flyway>6.3.2</version.flyway>
     <version.commons.lang3>3.10</version.commons.lang3>
