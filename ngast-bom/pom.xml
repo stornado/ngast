@@ -39,7 +39,7 @@
     <version.kafka.clients>3.9.1</version.kafka.clients>
     <version.jedis>3.2.0</version.jedis>
     <version.flyway>6.3.2</version.flyway>
-    <version.commons.lang3>3.10</version.commons.lang3>
+    <version.commons.lang3>3.18.0</version.commons.lang3>
     <version.maven.surefire>2.22.2</version.maven.surefire>
     <version.allure.maven>2.10.0</version.allure.maven>
     <version.maven.antrun>1.8</version.maven.antrun>
